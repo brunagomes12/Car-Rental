@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner readInput = new Scanner(System.in);
 		String line, nameFile;
-		int option;
+		int option, op;
 
 		System.out.printf("Informe 1 para entrar com os dados diretamente ou 2 para ler de um arquivo de texto:\n");
 	    option = new Scanner(System.in).nextInt();
@@ -82,6 +82,8 @@ public class Main {
 					file.close();
 					organize.organizedData(line);
 				}
+				
+			
 				if(organize.client_type.equalsIgnoreCase("normal")) {
 					
 					NormalClient client = new NormalClient(organize.amount_passenger);
