@@ -7,14 +7,14 @@ public class OrganizeData {
 	String line, fileName;
 	public String client_type;
 	String date;
-	String[] infos;
+	static String[] infos;
 	String[] dates;
 	public int amount_passenger;
-	int i;
+	static int i;
 	int j;
 	int week = 0;
-	int weekend = 0;
-	int sizes;
+	static int weekend = 0;
+	static int sizes;
 	
 	public OrganizeData(String line) {
 		this.line = line;
@@ -67,8 +67,8 @@ public class OrganizeData {
 		return week; 
 	}
 		
-	//verifica se é final semana
-	public int calculateRatesWeekend(ArrayList<String> days) {
+	//verifica se é final semana 
+	public static int calculateRatesWeekend(ArrayList<String> days) {
 		sizes = days.size();
 		for(i = 0; i < sizes; i++) {
 			if((days.get(i).equalsIgnoreCase("sab"))||
@@ -79,10 +79,10 @@ public class OrganizeData {
 		return weekend;
 	}
 	
-	public String[] splitData(String line) {
+	public static String[] splitData(String line) {
 		infos = line.split(":");
 		return infos;
-	}
+	} 
 	
 	public void organizedData(String line) {
 		splitData(line);

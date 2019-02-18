@@ -10,7 +10,7 @@ int amount_passenger, week = 0, weekend = 0, i=0, sizes;
 	
 	public NormalClientCalculation(int amount_passenger) {
 		this.amount_passenger = amount_passenger;
-	}
+	} 
 	
 	public int getAmount_passenger() {
 		return amount_passenger;

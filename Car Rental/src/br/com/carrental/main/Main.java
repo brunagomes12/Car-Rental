@@ -60,7 +60,7 @@ public class Main {
 			}
 		}else if(option == 2)  {
 			System.out.printf("Informe o nome de arquivo texto:\n");
-			nameFile = read.nextLine();
+			nameFile = read.nextLine(); 
 	    
 			try {
 				FileReader file = new FileReader(nameFile);
