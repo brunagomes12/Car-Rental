@@ -12,35 +12,33 @@ public class NormalClientCalculation{
 		this.amount_passenger = amount_passenger;
 	} 
 	
-	//Calcula valores conforme categoria
+	//Calcula as taxa da loja SouthCar
 	public static int calculateSouthCar(int week, int weekend) {
 		int finalValue = (week * 210) + (weekend * 200);
 		return finalValue;
 	} 
 	
+	//Calcula as taxa da loja WestCar
 	public static int calculateWestCar(int week, int weekend) {
 		int finalValue = (week * 530) + (weekend * 200);
 		return finalValue;
 	}
 	
+	//Calcula as taxa da loja NorthCar
 	public static int calculateNorthCar(int week, int weekend) {
 		int finalValue = (week * 630) + (weekend* 600);
 		return finalValue;
 	}
 	 
-
-	public static int checkRentalAgency(int amount_passenger, int week, int weekend){
+    //Calcula as taxa da loja loja conforme quantidade de passageiros
+	public int checkRentalAgency(int amount_passenger, int week, int weekend){
 		int result;
-		int valueOne = calculateSouthCar(week, weekend);
-		int valueTwo = calculateWestCar(week , weekend);
-		int valueThree = calculateNorthCar(week, weekend);
-		
 		if((amount_passenger == 1) || (amount_passenger == 2)) {
-			result = valueOne;
+			result = calculateSouthCar(week, weekend);
 		}else if((amount_passenger == 3) || (amount_passenger == 4)) {
-			result = valueTwo;
+			result = calculateWestCar(week , weekend);
 		}else
-				result = valueThree;		
+				result = calculateNorthCar(week, weekend);		
 		return result;	
-	}	
+	}
 }

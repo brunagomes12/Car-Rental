@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner read = new Scanner(System.in);
 		String line, nameFile;
-		int option, value=0, op;
+		int option, op;
 
 		System.out.printf("Informe 1 para entrar com os dados diretamente ou 2 para ler de um arquivo de texto:\n");
 	    option = new Scanner(System.in).nextInt();
@@ -28,15 +28,13 @@ public class Main {
 
 			OrganizeData organize = new OrganizeData(line);
 			organize.organizedData(line);
-			
-			
+		
 			//Verifica se a quatidade de passageiros está entro o aceitável
 			while(organize.amount_passenger < 1 || organize.amount_passenger > 7 ) {
 				System.out.println("Dados inválidos. Entre com os dados novamente: \n");
 				line = read.nextLine();
 				organize.organizedData(line);
 			}
-			
 			if(organize.client_type.equalsIgnoreCase("normal")) {
 				
 				NormalClient client = new NormalClient(organize.amount_passenger);			
@@ -47,20 +45,19 @@ public class Main {
 				
 				if(op == 1) {
 					NormalClientCalculation clientTwo = new NormalClientCalculation(organize.amount_passenger);
-					value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
-					System.out.println("Valor: R$" + value + ",00");				
+					System.out.println("R$" + clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days), organize.calculateRatesWeekend(organize.days)) + ",00");				
 				}
 			}else if(organize.client_type.equalsIgnoreCase("premium")) {
 				
 				PremiumClient client = new PremiumClient(organize.amount_passenger);			
 				System.out.println(client.checkRentalAgency(organize.amount_passenger)); 
 				
-				System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
+				System.out.println("Pressione 1 para exibir valor das taxas ou 2 para sair");	
 				op = new Scanner(System.in).nextInt();
 				
 				if(op == 1) {
 					PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);
-					value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
+					System.out.println("R$" + clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days), organize.calculateRatesWeekend(organize.days)) + ",00");
 				}
 			}
 		}else if(option == 2)  {
@@ -89,12 +86,12 @@ public class Main {
 					NormalClient client = new NormalClient(organize.amount_passenger);
 					System.out.println(client.checkRentalAgency(organize.amount_passenger));
 					
-					System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
+					System.out.println("Pressione 1 para exibir valor das taxas ou 2 para sair");	
 					op = new Scanner(System.in).nextInt();
 					
 					if(op == 1) {						
 						NormalClientCalculation clientTwo = new NormalClientCalculation(organize.amount_passenger);
-						value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
+						System.out.println("R$" + clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days), organize.calculateRatesWeekend(organize.days)) + ",00");
 					}				
 				}else if(organize.client_type.equalsIgnoreCase("premium")) {
 					
@@ -106,7 +103,7 @@ public class Main {
 					
 					if(op == 1) {						
 						PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);						
-						value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
+						System.out.println("R$" + clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days), organize.calculateRatesWeekend(organize.days)) + ",00");
 					}
 				}
 			}catch (IOException e){
