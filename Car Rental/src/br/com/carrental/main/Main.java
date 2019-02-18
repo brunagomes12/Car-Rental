@@ -10,11 +10,10 @@ import br.com.carrental.rentcalculation.*;
 
 public class Main {
 	public static void main(String[] args) {
-		ArrayList<String> daysTwo = new ArrayList<String>();
 		Scanner read = new Scanner(System.in);
 		String line, nameFile;
-		int option, week, weekend, value=0, op;
-		
+		int option, value=0, op;
+
 		System.out.printf("Informe 1 para entrar com os dados diretamente ou 2 para ler de um arquivo de texto:\n");
 	    option = new Scanner(System.in).nextInt();
 	    
@@ -30,7 +29,9 @@ public class Main {
 			OrganizeData organize = new OrganizeData(line);
 			organize.organizedData(line);
 			
-			while(organize.amount_passenger < 1 || organize.amount_passenger > 7) {
+			
+			//Verifica se a quatidade de passageiros está entro o aceitável
+			while(organize.amount_passenger < 1 || organize.amount_passenger > 7 ) {
 				System.out.println("Dados inválidos. Entre com os dados novamente: \n");
 				line = read.nextLine();
 				organize.organizedData(line);
@@ -58,7 +59,6 @@ public class Main {
 				op = new Scanner(System.in).nextInt();
 				
 				if(op == 1) {
-					
 					PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);
 					value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
 				}
@@ -77,13 +77,13 @@ public class Main {
 				OrganizeData organize = new OrganizeData(line);
 				organize.organizedData(line);
 				
+				//Verifica se a quatidade de passageiros está entro o aceitável
 				while(organize.amount_passenger < 1 || organize.amount_passenger > 7) {
 					System.out.println("Dados inválidos. Entre com os dados novamente: \n");
 					line = readFile.readLine(); 
 					file.close();
 					organize.organizedData(line);
 				}
-				
 				if(organize.client_type.equalsIgnoreCase("normal")) {
 					
 					NormalClient client = new NormalClient(organize.amount_passenger);
@@ -92,8 +92,7 @@ public class Main {
 					System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
 					op = new Scanner(System.in).nextInt();
 					
-					if(op == 1) {
-						
+					if(op == 1) {						
 						NormalClientCalculation clientTwo = new NormalClientCalculation(organize.amount_passenger);
 						value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
 					}				
@@ -104,8 +103,8 @@ public class Main {
 					
 					System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
 					op = new Scanner(System.in).nextInt();
-					if(op == 1) {
-						
+					
+					if(op == 1) {						
 						PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);						
 						value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
 					}

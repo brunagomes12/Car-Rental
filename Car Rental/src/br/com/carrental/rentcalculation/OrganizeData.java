@@ -4,29 +4,15 @@ import java.util.ArrayList;
 public class OrganizeData {
 	
 	public ArrayList<String> days = new ArrayList<String>();
-	String line, fileName;
-	public String client_type;
-	String date;
+	public String client_type, line, fileName, date;
 	static String[] infos;
 	String[] dates;
-	public int amount_passenger;
-	static int i;
-	int j;
-	int week = 0;
-	static int weekend = 0;
-	static int sizes;
+	static int i, j, week, weekend, sizes;
+	public static int amount_passenger;
 	
 	public OrganizeData(String line) {
 		this.line = line;
-	}
-	
-	public String getLine() {
-		return line;
-	}
-	
-	public void setLine(String line) {
-		this.line = line;
-	}	
+	} 
 	
 	public String clientType (String[] Infos) {
 		client_type = infos[0];		

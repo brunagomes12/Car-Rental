@@ -11,10 +11,6 @@ public class PremiumClient {
 	public PremiumClient(int amount_passenger){
 		this.amount_passenger = amount_passenger;
 	}
-	
-	public int getAmount_passenger() {
-		return amount_passenger;
-	}
 
 	public String checkRentalAgency(int amount_passenger){
 		String result;				
