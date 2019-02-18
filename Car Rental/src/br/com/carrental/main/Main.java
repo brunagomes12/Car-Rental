@@ -10,7 +10,7 @@ import br.com.carrental.rentcalculation.*;
 
 public class Main {
 	public static void main(String[] args) {
-		Scanner read = new Scanner(System.in);
+		Scanner readInput = new Scanner(System.in);
 		String line, nameFile;
 		int option, op;
 
@@ -19,12 +19,12 @@ public class Main {
 	    
 	    while(option < 1 || option > 2) {
 			System.out.println("Opção inválida.\"Informe 1 para entrar com os dados diretamente ou 2 para ler de um arquivo de texto:");
-			option = new Scanner(System.in).nextInt();
+			option = readInput.nextInt();
 		}
 		  
 	    if(option == 1) {
 			System.out.println("Entre com os dados: \n");
-			line = read.nextLine();
+			line = readInput.nextLine();
 
 			OrganizeData organize = new OrganizeData(line);
 			organize.organizedData(line);
@@ -32,7 +32,7 @@ public class Main {
 			//Verifica se a quatidade de passageiros está entro o aceitável
 			while(organize.amount_passenger < 1 || organize.amount_passenger > 7 ) {
 				System.out.println("Dados inválidos. Entre com os dados novamente: \n");
-				line = read.nextLine();
+				line = readInput.nextLine();
 				organize.organizedData(line);
 			}
 			if(organize.client_type.equalsIgnoreCase("normal")) {
@@ -53,7 +53,7 @@ public class Main {
 				System.out.println(client.checkRentalAgency(organize.amount_passenger)); 
 				
 				System.out.println("Pressione 1 para exibir valor das taxas ou 2 para sair");	
-				op = new Scanner(System.in).nextInt();
+				op = readInput.nextInt();
 				
 				if(op == 1) {
 					PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);
@@ -62,7 +62,7 @@ public class Main {
 			}
 		}else if(option == 2)  {
 			System.out.printf("Informe o nome de arquivo texto:\n");
-			nameFile = read.nextLine(); 
+			nameFile = readInput.nextLine(); 
 	    
 			try {
 				FileReader file = new FileReader(nameFile);
@@ -87,7 +87,7 @@ public class Main {
 					System.out.println(client.checkRentalAgency(organize.amount_passenger));
 					
 					System.out.println("Pressione 1 para exibir valor das taxas ou 2 para sair");	
-					op = new Scanner(System.in).nextInt();
+					op = readInput.nextInt();
 					
 					if(op == 1) {						
 						NormalClientCalculation clientTwo = new NormalClientCalculation(organize.amount_passenger);
@@ -99,7 +99,7 @@ public class Main {
 					System.out.println(client.checkRentalAgency(organize.amount_passenger));
 					
 					System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
-					op = new Scanner(System.in).nextInt();
+					op = readInput.nextInt();
 					
 					if(op == 1) {						
 						PremiumClientCalculation clientTwo = new PremiumClientCalculation(organize.amount_passenger);						

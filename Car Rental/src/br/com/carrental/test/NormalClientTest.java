@@ -13,7 +13,7 @@ class NormalClientTest {
 		NormalClient client = new NormalClient(5);
 	}
  
-	@Test 
+	@Test  
 	void testCheckRentalAgency() {
 		NormalClient client = new NormalClient(8);
 		assertEquals("Dados inválidos",client.checkRentalAgency(8));
