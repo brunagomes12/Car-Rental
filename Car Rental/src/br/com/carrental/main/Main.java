@@ -22,13 +22,19 @@ public class Main {
 			System.out.println("Opção inválida.\"Informe 1 para entrar com os dados diretamente ou 2 para ler de um arquivo de texto:");
 			option = new Scanner(System.in).nextInt();
 		}
-		 
+		  
 	    if(option == 1) {
 			System.out.println("Entre com os dados: \n");
 			line = read.nextLine();
 
 			OrganizeData organize = new OrganizeData(line);
 			organize.organizedData(line);
+			
+			while(organize.amount_passenger < 1 || organize.amount_passenger > 7) {
+				System.out.println("Dados inválidos. Entre com os dados novamente: \n");
+				line = read.nextLine();
+				organize.organizedData(line);
+			}
 			
 			if(organize.client_type.equalsIgnoreCase("normal")) {
 				
@@ -39,7 +45,6 @@ public class Main {
 				op = new Scanner(System.in).nextInt();
 				
 				if(op == 1) {
-					
 					NormalClientCalculation clientTwo = new NormalClientCalculation(organize.amount_passenger);
 					value = clientTwo.checkRentalAgency(organize.amount_passenger, organize.calculateRatesWeek(organize.days) , organize.calculateRatesWeekend(organize.days));
 					System.out.println("Valor: R$" + value + ",00");				
@@ -47,7 +52,7 @@ public class Main {
 			}else if(organize.client_type.equalsIgnoreCase("premium")) {
 				
 				PremiumClient client = new PremiumClient(organize.amount_passenger);			
-				System.out.println(client.checkRentalAgency(organize.amount_passenger));
+				System.out.println(client.checkRentalAgency(organize.amount_passenger)); 
 				
 				System.out.println("Pressione 1 para exibir valor ou 2 para sair");	
 				op = new Scanner(System.in).nextInt();
@@ -71,6 +76,13 @@ public class Main {
 				
 				OrganizeData organize = new OrganizeData(line);
 				organize.organizedData(line);
+				
+				while(organize.amount_passenger < 1 || organize.amount_passenger > 7) {
+					System.out.println("Dados inválidos. Entre com os dados novamente: \n");
+					line = readFile.readLine(); 
+					file.close();
+					organize.organizedData(line);
+				}
 				
 				if(organize.client_type.equalsIgnoreCase("normal")) {
 					

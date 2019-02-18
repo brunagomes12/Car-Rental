@@ -12,11 +12,11 @@ int amount_passenger, week = 0, weekend = 0, i=0, sizes;
 		this.amount_passenger = amount_passenger;
 	} 
 	
-	public int getAmount_passenger() {
+	public int getAmount_passenger() { 
 		return amount_passenger;
 	}
 		
-	public int checkRentalAgency(int amount_passenger, int week, int weekend){
+	public static int checkRentalAgency(int amount_passenger, int week, int weekend){
 		int result;
 		int valueOne = (week * 210) + (weekend * 200);
 		int valueTwo = (week * 530) + (weekend * 200);
@@ -27,15 +27,17 @@ int amount_passenger, week = 0, weekend = 0, i=0, sizes;
 				result = valueOne;
 			}else if (valueTwo < valueOne && valueTwo < valueThree) {
 				result = valueTwo;
-			}else 				
+			}else 				 
 				result = valueThree;	
-		}else if(amount_passenger ==3 || (amount_passenger == 4)) {
+		}else if((amount_passenger == 3) || (amount_passenger == 4)) {
 			if(valueTwo < valueThree) {
 				result = valueTwo;
 			}else
 				result = valueThree;		
-		} else  
+		} else if((amount_passenger >= 5) && (amount_passenger <= 7)) {
 			result = valueThree;
+		}else 
+			result = 0;
 		return result;
 	}	
 }

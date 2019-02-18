@@ -20,7 +20,7 @@ public class PremiumClientCalculation {
 	public int calculateSouthCar(int week, int weekend) {
 		int finalValue = (week * 150) + (weekend * 90);
 		return finalValue;
-	}
+	} 
 	
 	public int calculateWestCar(int week, int weekend) {
 		int finalValue = (week * 150) + (weekend * 90);
@@ -43,15 +43,17 @@ public class PremiumClientCalculation {
 				result = valueOne;
 			}else if (valueTwo < valueOne && valueTwo < valueThree) {
 				result = valueTwo;
-			}else 				
+			}else 				 
 				result = valueThree;	
-		}else if(amount_passenger ==3 || (amount_passenger == 4)) {
+		}else if((amount_passenger == 3) || (amount_passenger == 4)) {
 			if(valueTwo < valueThree) {
 				result = valueTwo;
 			}else
 				result = valueThree;		
-		} else  
+		} else if((amount_passenger >= 5) && (amount_passenger <= 7)) {
 			result = valueThree;
+		}else 
+			result = 0;
 		return result;
 	}	
 }
